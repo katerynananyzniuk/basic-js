@@ -13,9 +13,10 @@ import { NotImplementedError } from '../extensions/index.js';
  */
 export default function getSeason(date) {
   if (date){
-    if (Object.entries(date).length > 0) throw new Error('Invalid date!')
+    if (Object.getOwnPropertyNames(date).length>0 || typeof(date) === 'function') throw new Error('Invalid date!')
   }else{return 'Unable to determine the time of year!'}
-  let m = date.getMonth()
+  let d = new Date(date)
+  let m = d.getMonth()
   if(m<2){
     return 'winter'
   }
@@ -27,5 +28,6 @@ export default function getSeason(date) {
   }
   else if(m<11){
     return 'autumn'
-  } 
+  }
+  else return 'winter'
 }

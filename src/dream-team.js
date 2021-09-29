@@ -14,8 +14,18 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function createDreamTeam(members) {
-  let dreamTeam = []
-  members.forEach((item)=>{if (typeof(item)==="string"){return dreamTeam.push(item[0])}})
-  dreamTeam = dreamTeam.sort().join("")
-  return dreamTeam
+  if(typeof(members) === 'object' && members !== null){
+    if (Array.isArray(members)){
+    let dreamTeam = []
+    members.forEach((item)=>{
+      if (typeof(item) === 'null') {return false}
+      if (typeof(item)==="string"){
+        item = item.trim()
+        return dreamTeam.push(item[0].toUpperCase())
+      }})
+    dreamTeam = dreamTeam.sort().join("")
+    return dreamTeam
+    }
+  }
+  return false
 }
