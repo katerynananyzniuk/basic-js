@@ -18,5 +18,11 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
 export default function dateSample(sampleActivity) {
-  
+    let age = Math.ceil(Math.log(MODERN_ACTIVITY / +sampleActivity) / (0.693 / HALF_LIFE_PERIOD))
+    if (typeof(age)==='number' && !isNaN(age)){
+      if (age>0){
+        return age
+      }
+    }
+    else {return false}
 }
