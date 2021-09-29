@@ -16,6 +16,6 @@ import { NotImplementedError } from '../extensions/index.js';
 export default function createDreamTeam(members) {
   let dreamTeam = []
   members.forEach((item)=>{if (typeof(item)==="string"){return dreamTeam.push(item[0])}})
-  dreamTeam.sort()
+  dreamTeam = dreamTeam.sort().join("")
   return dreamTeam
 }
